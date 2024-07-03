@@ -1,21 +1,39 @@
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import socketIo from 'socket.io-client';
+import { Order } from '../../types/Order';
+import api from '../../utils/api';
+import { isTokenValid } from '../../utils/auth';
 import { OrdersBoard } from '../OrdersBoard';
 import { Container } from './styles';
-import { Order } from '../../types/Order';
-import { useEffect, useState } from 'react';
-import { api } from '../../utils/api';
-import socketIo from 'socket.io-client';
 
 export function Orders() {
   const [orders, setOrders] = useState<Order[]>([]);
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const socket = socketIo('http://localhost:3001', {
+    if (!isTokenValid(token)) {
+      navigate('/login');
+    }
+  }, [token, navigate]);
+
+  useEffect(() => {
+    const socket = socketIo(`${import.meta.env.VITE_BASE_URL}`, {
       transports: ['websocket'],
+    });
+
+    socket.on('connect', () => {
+      console.log('Socket conectado!');
     });
 
     socket.on('orders@new', (order) => {
       setOrders(prevState => prevState.concat(order));
     });
+
+    return () => {
+      socket.disconnect();
+    };
   }, []);
 
   useEffect(() => {

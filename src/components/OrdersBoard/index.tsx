@@ -1,9 +1,9 @@
-import { Board, OrdersContainer } from './styles';
-import { Order } from '../../types/Order';
-import { OrderModal } from '../OrderModal';
 import { useState } from 'react';
-import { api } from '../../utils/api';
 import { toast } from 'react-toastify';
+import { Order } from '../../types/Order';
+import api from '../../utils/api';
+import { OrderModal } from '../OrderModal';
+import { Board, OrdersContainer } from './styles';
 
 interface OrdersBoardProps {
   icon: string;

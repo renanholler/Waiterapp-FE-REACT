@@ -1,8 +1,8 @@
+import { useEffect } from 'react';
 import closeIcon from '../../assets/images/close-icon.svg';
-import { Overlay, ModalBody, OrderDetails, Actions } from './styles';
 import { Order } from '../../types/Order';
 import { formatCurrency } from '../../utils/formatCurrency';
-import { useEffect } from 'react';
+import { Actions, ModalBody, OrderDetails, Overlay } from './styles';
 
 interface OrderModalProps {
   visible: boolean;
@@ -66,9 +66,10 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, onChangeOrd
 
           <div className="order-items">
             {order.products.map(({ _id, product, quantity }) => (
+              console.log(`${import.meta.env.VITE_BASE_URL}/uploads/${product.imagePath}`),
               <div className="item" key={_id}>
                 <img
-                  src={`http://localhost:3001/uploads/${product.imagePath}`}
+                  src={`${import.meta.env.VITE_BASE_URL}/uploads/${product.imagePath}`}
                   alt={product.name}
                   width="56"
                   height="28.51"
