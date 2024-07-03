@@ -48,15 +48,25 @@ export function Orders() {
   const done = orders.filter((order) => order.status === 'DONE');
 
   function handleCancelOrder(orderId: string) {
-    setOrders((prevState) => prevState.filter(order => order._id !== orderId));
+    console.log('Cancelando ordem:', orderId);
+    setOrders((prevState) => {
+      const updatedOrders = prevState.filter(order => order._id !== orderId);
+      console.log('Ordens atualizadas:', updatedOrders);
+      return updatedOrders;
+    });
   }
 
   function handleOrderStatusChange(orderId: string, status: Order['status']) {
-    setOrders((prevState) => prevState.map((order) => (
-      order._id === orderId
-        ? { ...order,  status}
-        : order
-    )));
+    console.log('Alterando status da ordem:', orderId, status);
+    setOrders((prevState) => {
+      const updatedOrders = prevState.map((order) => (
+        order._id === orderId
+          ? { ...order, status }
+          : order
+      ));
+      console.log('Ordens atualizadas:', updatedOrders);
+      return updatedOrders;
+    });
   }
 
   return (

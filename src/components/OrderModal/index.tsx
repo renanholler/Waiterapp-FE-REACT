@@ -66,7 +66,6 @@ export function OrderModal({ visible, order, onClose, onCancelOrder, onChangeOrd
 
           <div className="order-items">
             {order.products.map(({ _id, product, quantity }) => (
-              console.log(`${import.meta.env.VITE_BASE_URL}/uploads/${product.imagePath}`),
               <div className="item" key={_id}>
                 <img
                   src={`${import.meta.env.VITE_BASE_URL}/uploads/${product.imagePath}`}

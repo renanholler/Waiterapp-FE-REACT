@@ -29,26 +29,40 @@ export function OrdersBoard({ icon, title, orders, onCancelOrder, onChangeOrderS
   }
 
   async function handleChangeOrderStatus() {
+    console.log('Iniciando alteração de status da ordem...');
     setIsLoading(true);
+    try {
+      const status = selectedOrder?.status === 'WAITING'
+        ? 'IN_PRODUCTION'
+        : 'DONE';
 
-    const status = selectedOrder?.status === 'WAITING'
-      ? 'IN_PRODUCTION'
-      : 'DONE';
-
-    await api.patch(`/orders/${selectedOrder?._id}`, { status });
-    toast.success(`O pedido da mesa ${selectedOrder?.table} teve o status alterado!`);
-    onChangeOrderStatus(selectedOrder!._id, status);
-    setIsLoading(false);
-    setIsModalVisible(false);
+      await api.patch(`/orders/${selectedOrder?._id}`, { status });
+      toast.success(`O pedido da mesa ${selectedOrder?.table} teve o status alterado!`);
+      console.log('Status alterado, atualizando estado...');
+      onChangeOrderStatus(selectedOrder!._id, status);
+    } catch (error) {
+      console.error('Erro ao alterar o status da ordem:', error);
+    } finally {
+      setIsLoading(false);
+      setIsModalVisible(false);
+    }
   }
 
   async function handleCancelOrder() {
+    console.log('Iniciando cancelamento da ordem...');
     setIsLoading(true);
-    await api.delete(`/orders/${selectedOrder?._id}`);
-    toast.success(`O pedido da mesa ${selectedOrder?.table} foi cancelado!`);
-    onCancelOrder(selectedOrder!._id);
-    setIsLoading(false);
-    setIsModalVisible(false);
+    try {
+      const response = await api.delete(`/orders/${selectedOrder?._id}`);
+      console.log('Resposta da API:', response);
+      toast.success(`O pedido da mesa ${selectedOrder?.table} foi cancelado!`);
+      console.log('Ordem cancelada, atualizando estado...');
+      onCancelOrder(selectedOrder!._id);
+    } catch (error) {
+      console.error('Erro ao cancelar a ordem:', error);
+    } finally {
+      setIsLoading(false);
+      setIsModalVisible(false);
+    }
   }
 
   return <Board>
