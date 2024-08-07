@@ -1,5 +1,5 @@
-describe('Numeração a verificar - Login', () => {
-  it('Numeração a verificar - Verificar se é possível efetuar login corretamente', () => {
+describe('RT15 - Login', () => {
+  it('CT15 - Verificar se é possível efetuar login corretamente', () => {
     cy.visit('http://localhost:5173/login');
 
     // Verifique se o campo de entrada "email" está presente na DOM e visível

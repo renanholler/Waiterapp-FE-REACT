@@ -1,5 +1,5 @@
-describe('Numeração a verificar - Mudança de status de pedidos', () => {
-  it('Verificar se os pedidos mudam de status corretamente', () => {
+describe('RT19 - Mudança de status de pedidos', () => {
+  it('CT19 - Verificar se os pedidos mudam de status corretamente', () => {
     cy.visit('http://localhost:5173/login');
 
     // Verifique se o campo de entrada "email" está presente na DOM e visível

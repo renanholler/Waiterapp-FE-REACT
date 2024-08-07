@@ -1,17 +1,5 @@
-/**
- * RT09 - Categorização de pedido por status
- *
- * Título do cenário de teste: Categorização de pedido por status
- * Identificador do requisito: RF04
- * Descrição do requisito: Verificar se os pedidos são categorizados corretamente por status.
- * Identificador do roteiro de teste: RT09
- * Objetivo do roteiro de teste: Verificar se os pedidos são categorizados corretamente por status.
- * Localização: Função de categorização de pedidos
- * Pré-condições: O sistema deve ter pedidos com diferentes status. Usuário deve estar logado.
- */
-
-describe('RT11 - Verificação dos pedidos por status', () => {
-  it('CT11 - Verificar se os pedidos são exibidos nos três diferentes status', () => {
+describe('RT17 - Verificação dos pedidos por status', () => {
+  it('CT17 - Verificar se os pedidos são exibidos nos três diferentes status', () => {
     cy.visit('http://localhost:5173/login');
 
     // Verifique se o campo de entrada "email" está presente na DOM e visível

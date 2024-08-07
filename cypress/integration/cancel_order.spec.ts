@@ -1,5 +1,5 @@
-describe('Numeração a verificar - Cancelamento de pedidos', () => {
-  it('Verificar se os pedidos são cancelados corretamente', () => {
+describe('RT18 - Cancelamento de pedidos', () => {
+  it('CT18 - Verificar se os pedidos são cancelados corretamente', () => {
     cy.visit('http://localhost:5173/login');
 
     // Verifique se o campo de entrada "email" está presente na DOM e visível

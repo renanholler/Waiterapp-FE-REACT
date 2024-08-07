@@ -1,15 +1,5 @@
-/**
- * RT06 - Visualização de lista de pedidos
- *
- * Identificador do roteiro de teste: RT06
- * Objetivo do roteiro de teste: Verificar se os pedidos são exibidos corretamente em uma lista.
- * Localização: Função de listagem de pedidos
- * Pré-condições: O sistema deve ter pedidos registrados.
- * Identificador do caso de teste: CT06
- * Objetivo do caso de teste: Verificar se os pedidos são exibidos corretamente na lista.
- */
-describe('RT06 - Visualização de lista de pedidos', () => {
-  it('CT06 - Verificar se os pedidos são exibidos corretamente em uma lista', () => {
+describe('RT16 - Visualização de lista de pedidos', () => {
+  it('CT16 - Verificar se os pedidos são exibidos corretamente em uma lista', () => {
     cy.visit('http://localhost:5173/login');
 
     // Verifique se o campo de entrada "email" está presente na DOM e visível
